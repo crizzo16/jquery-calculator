@@ -122,7 +122,7 @@
 
             $(".btn").on("click", function () {
                 //Grab button value
-                var value = $(".btn").val();
+                var value = $(this).attr("value");
                 console.log("value:" + value);
                 //If the user is inputting the first number
                 if (operator === "") {
@@ -130,8 +130,17 @@
                     document.getElementById("first-number").innerHTML = num1;
                 } 
                 //If the user selects an operator
+            if (value === "plus" || value === "minus" || value === "times" || value === "divide" || value === "power"){
+                operator = value; 
+                console.log(operator);
+            }
+
+            
 
                 //If the user is inputting the second number
+
+
+
 
                 //If the user wants the result
 
