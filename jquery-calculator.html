@@ -118,7 +118,7 @@
             var num1 = "";
             var num2 = "";
             var operator = "";
-            var result;
+            var result = "";
 
             $(".btn").on("click", function () {
                 //Grab button value
@@ -127,22 +127,79 @@
                 //If the user is inputting the first number
                 if (operator === "") {
                     num1 = parseInt(num1.toString() + value);
-                    document.getElementById("first-number").innerHTML = num1;
+                    $("#first-number").text(num1);
                 } 
                 //If the user selects an operator
             if (value === "plus" || value === "minus" || value === "times" || value === "divide" || value === "power"){
                 operator = value; 
-                console.log(operator);
+
+                if (operator === "plus"){
+                    $("#operator").text("+");
+                }
+
+                if (operator === "minus"){
+                    $("#operator").text("-");
+                }
+
+                if (operator === "times"){
+                    $("#operator").html("&times;");
+                }
+
+                if (operator === "divide"){
+                    $("#operator").html("&divide;");
+                }
+
+                if (operator === "power"){
+                    $("#operator").text("^");
+                }
+            
             }
 
             
 
                 //If the user is inputting the second number
+            
+            else if (!(operator === "")) {
+                num2 = parseInt(num2.toString() + value);
+                $("#second-number").text(num2);
+                console.log(num2);
 
-
-
+            }
+            
 
                 //If the user wants the result
+
+            if (value === "equals") {
+                if (operator === "plus") {
+                $("#result").text(num1 + num2);
+                }
+                if (operator === "minus") {
+                $("#result").text(num1 - num2);
+                }
+                if (operator === "times") {
+                $("#result").text(num1 * num2);
+                }
+                if (operator === "divide") {
+                $("#result").text(num1 / num2);
+                }
+                if (operator === "power") {
+                $("#result").text(Math.pow (num1, num2));
+                }
+            }
+
+
+
+                //Clear button
+
+            if (value === "clear") {
+                $("#first-number, #second-number, #operator, #result").empty();
+                num1="";
+                num2="";
+                operator="";
+                result="";
+
+            }
+
 
             });
 
